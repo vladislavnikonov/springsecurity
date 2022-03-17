@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Update</title>
+</head>
+<body>
+Update password
+<form th:method="POST" th:action="@{/auth/update}" th:object="${user}">
+    <label for="code">Enter code: </label>
+    <input type="text" th:field="*{activationCode}" id="code"/>
+    <div style="color:red" th:if="${#fields.hasErrors('activationCode')}" th:errors="*{activationCode}">Code Error</div>
+    <br/>
+    <label for="password">Enter new password: </label>
+    <input type="password" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+    <br/>
+    <input type="submit" value="Update"/>
+</form>
+</body>
+</html>
